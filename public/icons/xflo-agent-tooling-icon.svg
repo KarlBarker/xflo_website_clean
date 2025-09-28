@@ -1,0 +1,30 @@
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <!-- Central gear -->
+  <g transform="translate(32, 32)">
+    <!-- Gear teeth -->
+    <path d="M -2,-16 L 2,-16 L 1.5,-12 L -1.5,-12 Z" fill="currentColor"/>
+    <path d="M -2,-16 L 2,-16 L 1.5,-12 L -1.5,-12 Z" fill="currentColor" transform="rotate(45)"/>
+    <path d="M -2,-16 L 2,-16 L 1.5,-12 L -1.5,-12 Z" fill="currentColor" transform="rotate(90)"/>
+    <path d="M -2,-16 L 2,-16 L 1.5,-12 L -1.5,-12 Z" fill="currentColor" transform="rotate(135)"/>
+    <path d="M -2,-16 L 2,-16 L 1.5,-12 L -1.5,-12 Z" fill="currentColor" transform="rotate(180)"/>
+    <path d="M -2,-16 L 2,-16 L 1.5,-12 L -1.5,-12 Z" fill="currentColor" transform="rotate(225)"/>
+    <path d="M -2,-16 L 2,-16 L 1.5,-12 L -1.5,-12 Z" fill="currentColor" transform="rotate(270)"/>
+    <path d="M -2,-16 L 2,-16 L 1.5,-12 L -1.5,-12 Z" fill="currentColor" transform="rotate(315)"/>
+
+    <!-- Main gear circle -->
+    <circle cx="0" cy="0" r="12" fill="none" stroke="currentColor" stroke-width="2"/>
+    <circle cx="0" cy="0" r="4" fill="currentColor"/>
+  </g>
+
+  <!-- Connection nodes -->
+  <circle cx="14" cy="14" r="3" fill="currentColor"/>
+  <circle cx="50" cy="14" r="3" fill="currentColor"/>
+  <circle cx="50" cy="50" r="3" fill="currentColor"/>
+  <circle cx="14" cy="50" r="3" fill="currentColor"/>
+
+  <!-- Connection lines -->
+  <line x1="17" y1="17" x2="26" y2="26" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+  <line x1="47" y1="17" x2="38" y2="26" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+  <line x1="47" y1="47" x2="38" y2="38" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+  <line x1="17" y1="47" x2="26" y2="38" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+</svg>

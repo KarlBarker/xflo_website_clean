@@ -1,0 +1,25 @@
+/* Custom cursor styles to ensure mix-blend-mode works properly */
+.cursor {
+  pointer-events: none;
+}
+
+.cursor__ball {
+  position: fixed;
+  top: 0;
+  left: 0;
+  mix-blend-mode: difference;
+  z-index: 1000;
+}
+
+.cursor__ball circle {
+  fill: #f7f8fa;
+}
+
+/* Force mix-blend-mode to work across all elements */
+* {
+  isolation: auto;
+}
+
+html, body {
+  isolation: auto;
+}

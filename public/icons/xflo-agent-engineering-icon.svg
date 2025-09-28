@@ -1,0 +1,29 @@
+<svg viewBox="0 0 72 64" xmlns="http://www.w3.org/2000/svg">
+  <!-- Agent schematic (no grid background) -->
+
+  <!-- Head -->
+  <circle cx="36" cy="16" r="10" fill="none" stroke="currentColor" stroke-width="2"/>
+  <circle cx="32" cy="14" r="1.5" fill="currentColor"/>
+  <circle cx="40" cy="14" r="1.5" fill="currentColor"/>
+
+  <!-- Body structure -->
+  <rect x="28" y="26" width="16" height="20" fill="none" stroke="currentColor" stroke-width="2"/>
+
+  <!-- Internal components -->
+  <rect x="30" y="29" width="12" height="2" fill="currentColor" opacity="0.7"/>
+  <rect x="30" y="34" width="12" height="2" fill="currentColor" opacity="0.7"/>
+  <rect x="30" y="39" width="12" height="2" fill="white"/>
+
+  <!-- Arms/connections -->
+  <line x1="28" y1="30" x2="16" y2="34" stroke="currentColor" stroke-width="2"/>
+  <line x1="44" y1="30" x2="56" y2="34" stroke="currentColor" stroke-width="2"/>
+
+  <!-- Connection points -->
+  <circle cx="16" cy="34" r="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+  <circle cx="56" cy="34" r="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+
+  <!-- Simple measurement indicator -->
+  <line x1="10" y1="52" x2="26" y2="52" stroke="currentColor" stroke-width="0.5" opacity="0.6"/>
+  <line x1="10" y1="50" x2="10" y2="54" stroke="currentColor" stroke-width="0.5" opacity="0.6"/>
+  <line x1="26" y1="50" x2="26" y2="54" stroke="currentColor" stroke-width="0.5" opacity="0.6"/>
+</svg>

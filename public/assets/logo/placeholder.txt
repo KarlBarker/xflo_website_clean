@@ -1,0 +1,6 @@
+IMPORTANT: Replace this file with your actual logo assets:
+
+1. logo_transparent.webp - Your animated W mark (WebP format)
+2. logo_transparent.gif - Your animated W mark (GIF format)
+
+The system is ready and will work as soon as you add these files!

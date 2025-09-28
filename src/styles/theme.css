@@ -1,0 +1,989 @@
+/**
+ * xFlo Design System - Foundation Tokens
+ * Aligned with shadcn/ui v2.0+ requirements
+ * Generated from Figma design tokens
+ *
+ * Using HSL color format for simplicity and compatibility
+ */
+
+
+ /* ===================================
+    CSS VARIABLES FOR SHADCN/UI
+    Must be in :root for shadcn components
+    =================================== */
+ 
+ :root {
+   /* ===================================
+      DESIGN SYSTEM COLOR HIERARCHY
+      Matching designer's mental model
+      =================================== */
+   
+   /* Primary Colors (Main brand colors) */
+   --primary-dark: 0 0% 9%;            /* #171717 - neutral-900 */
+   --primary-light: 0 0% 100%;         /* #ffffff - white */
+   
+   /* Secondary Color (Accent/Action color) */
+   --secondary: 0 72% 51%;             /* #dc2626 - red-600 */
+   
+   /* Tertiary Colors (Supporting colors) */
+   --tertiary-amber: 33 100% 51%;      /* #ff9505 - amber-500 */
+   --tertiary-green: 145 64% 49%;      /* #2ecc71 - green-500 */
+   --tertiary-blue: 217 100% 61%;      /* #3a86ff - blue-500 */
+   --tertiary-neutral: 0 0% 15%;       /* #262626 - neutral-800 */
+   
+   /* Neutral/Grey Scale - Full Tailwind Palette */
+   --neutral-50: 0 0% 98%;             /* #fafafa */
+   --neutral-100: 0 0% 96%;            /* #f5f5f5 */
+   --neutral-200: 0 0% 90%;            /* #e5e5e5 */
+   --neutral-300: 0 0% 83%;            /* #d4d4d4 */
+   --neutral-400: 0 0% 64%;            /* #a3a3a3 */
+   --neutral-500: 0 0% 45%;            /* #737373 */
+   --neutral-600: 0 0% 32%;            /* #525252 */
+   --neutral-700: 0 0% 25%;            /* #404040 */
+   --neutral-800: 0 0% 15%;            /* #262626 */
+   --neutral-900: 0 0% 9%;             /* #171717 */
+   --neutral-950: 0 0% 4%;             /* #0a0a0a */
+   
+   /* ===================================
+      SHADCN/UI REQUIRED VARIABLES
+      Mapped to your design hierarchy
+      =================================== */
+   
+   /* Light Mode (Default) */
+   --background: var(--primary-light);         /* white background */
+   --foreground: var(--primary-dark);          /* neutral-900 text */
+   
+   --card: var(--primary-light);               /* white cards */
+   --card-foreground: var(--primary-dark);     /* neutral-900 text */
+   
+   --popover: var(--primary-light);            /* white popovers */
+   --popover-foreground: var(--primary-dark);  /* neutral-900 text */
+   
+   --primary: var(--secondary);                /* red-500 for primary actions */
+   --primary-foreground: var(--primary-light); /* white text on red */
+   
+   --secondary: var(--tertiary-neutral);       /* neutral-800 for secondary actions */
+   --secondary-foreground: var(--primary-light); /* white text */
+   
+   --muted: var(--neutral-200);                /* light grey backgrounds */
+   --muted-foreground: var(--neutral-600);     /* medium grey text */
+   
+   --accent: var(--neutral-200);               /* light grey accents */
+   --accent-foreground: var(--primary-dark);   /* neutral-900 text */
+   
+   --destructive: 0 84% 60%;                   /* error red */
+   --destructive-foreground: var(--primary-light);
+   
+   --border: var(--neutral-200);               /* light grey borders */
+   --input: var(--neutral-200);                /* light grey inputs */
+   --ring: var(--secondary);                   /* red-500 focus rings */
+   
+   --radius: 0.375rem;                         /* 6px default radius */
+   
+   /* Chart colors using your palette */
+   --chart-1: var(--secondary);                /* red-500 */
+   --chart-2: var(--tertiary-blue);            /* blue-500 */
+   --chart-3: var(--tertiary-amber);           /* amber-500 */
+   --chart-4: var(--tertiary-green);           /* green-500 */
+   --chart-5: var(--tertiary-neutral);         /* neutral-800 */
+ }
+ 
+ /* Dark mode overrides */
+ .dark {
+   /* Invert primary colors */
+   --background: var(--primary-dark);           /* neutral-900 background */
+   --foreground: var(--primary-light);          /* white text */
+   
+   --card: var(--neutral-900);                  /* dark cards */
+   --card-foreground: var(--primary-light);     /* white text */
+   
+   --popover: var(--neutral-900);               /* dark popovers */
+   --popover-foreground: var(--primary-light);  /* white text */
+   
+   --primary: var(--secondary);                 /* red-500 stays the same */
+   --primary-foreground: var(--primary-light);  /* white text */
+   
+   --secondary: var(--neutral-700);             /* lighter grey for visibility */
+   --secondary-foreground: var(--primary-light);
+   
+   --muted: var(--neutral-800);                 /* darker muted */
+   --muted-foreground: var(--neutral-400);      /* lighter muted text */
+   
+   --accent: var(--neutral-800);                /* dark accents */
+   --accent-foreground: var(--primary-light);   /* white text */
+   
+   --destructive: 0 63% 31%;                    /* darker error red */
+   --destructive-foreground: var(--primary-light);
+   
+   --border: var(--neutral-800);                /* dark borders */
+   --input: var(--neutral-800);                 /* dark inputs */
+   --ring: var(--secondary);                    /* red-500 focus stays */
+ }
+ 
+ @theme {
+   /* ===================================
+      FONT FAMILY CONFIGURATION
+      Let Next.js handle fonts, just ensure Tailwind utilities work
+      =================================== */
+
+   /* ===================================
+      COLOR TOKENS FOR TAILWIND UTILITIES
+      These create the actual utility classes
+      =================================== */
+   
+   /* Primary Colors - Designer's primary palette */
+   --color-primary-dark: hsl(var(--primary-dark));
+   --color-primary-light: hsl(var(--primary-light));
+   
+   /* Secondary Color - Main accent */
+   --color-secondary: hsl(0 72% 51%);
+   
+   /* Tertiary Colors - Supporting palette */
+   --color-tertiary-amber: hsl(33 100% 51%);
+   --color-tertiary-green: hsl(145 64% 49%);
+   --color-tertiary-blue: hsl(217 100% 61%);
+   --color-tertiary-neutral: hsl(0 0% 15%);
+   
+   /* Individual Color Tokens (for compatibility) */
+   --color-amber-500: hsl(33 100% 51%);
+   --color-green-500: hsl(145 64% 49%);
+   --color-blue-500: hsl(217 100% 61%);
+   --color-red-500: hsl(0 72% 51%);
+   
+   /* Neutral/Grey Palette */
+   --color-neutral-50: hsl(var(--neutral-50));
+   --color-neutral-100: hsl(var(--neutral-100));
+   --color-neutral-200: hsl(var(--neutral-200));
+   --color-neutral-300: hsl(var(--neutral-300));
+   --color-neutral-400: hsl(var(--neutral-400));
+   --color-neutral-500: hsl(var(--neutral-500));
+   --color-neutral-600: hsl(var(--neutral-600));
+   --color-neutral-700: hsl(var(--neutral-700));
+   --color-neutral-800: hsl(var(--neutral-800));
+   --color-neutral-900: hsl(var(--neutral-900));
+   --color-neutral-950: hsl(var(--neutral-950));
+   
+   /* Pure Colors */
+   --color-white: hsl(0 0% 100%);
+   --color-black: hsl(0 0% 0%);
+
+  /* ===================================
+     STANDARD TAILWIND TEXT UTILITIES
+     Standard text-* classes that match Tailwind expectations
+     =================================== */
+
+  /* Tailwind text sizes - Corrected scale with smart responsive behavior */
+  /* Small sizes - consistent across devices */
+  --text-xs: 0.75rem;     /* 12px - always 12px */
+  --text-sm: 0.875rem;    /* 14px - always 14px */
+  
+  /* Body sizes - responsive scaling */
+  --text-base: 1rem;      /* 16px desktop */
+  --text-lg: 1.125rem;    /* 18px desktop */
+  --text-xl: 1.25rem;     /* 20px desktop */
+  
+  /* Large display sizes */
+  --text-2xl: 1.5rem;     /* 24px */
+  --text-3xl: 1.875rem;   /* 30px */
+  --text-4xl: 2.25rem;    /* 36px */
+  --text-5xl: 3rem;       /* 48px */
+  --text-6xl: 3.75rem;    /* 60px */
+  --text-7xl: 4.5rem;     /* 72px */
+  --text-8xl: 6rem;       /* 96px */
+  --text-9xl: 8rem;       /* 128px */
+
+  /* Mobile variants for responsive sizes */
+  --text-base-mobile: 0.875rem;  /* 14px mobile */
+  --text-lg-mobile: 1rem;         /* 16px mobile */
+  --text-xl-mobile: 1.125rem;     /* 18px mobile */
+
+  /* Tailwind line heights - Updated for new sizes */
+  --text-xs--line-height: 1rem;        /* 16px (12px × 1.33) */
+  --text-sm--line-height: 1.25rem;     /* 20px (14px × 1.43) */
+  --text-base--line-height: 1.5rem;    /* 24px (16px × 1.5) */
+  --text-lg--line-height: 1.75rem;     /* 28px (18px × 1.56) */
+  --text-xl--line-height: 1.875rem;    /* 30px (20px × 1.5) */
+  --text-2xl--line-height: 2.16rem;   /* 34.6px (24px × 1.44) */
+  --text-3xl--line-height: 2.7rem;    /* 43.2px (30px × 1.44) */
+  --text-4xl--line-height: 3.24rem;   /* 51.8px (36px × 1.44) */
+  --text-5xl--line-height: 1;         /* Proportional for large text */
+  --text-6xl--line-height: 1;
+  --text-7xl--line-height: 1;
+  --text-8xl--line-height: 1;
+  --text-9xl--line-height: 1;
+
+  /* Mobile line heights */
+  --text-base-mobile--line-height: 1.25rem;  /* 20px (14px × 1.43) */
+  --text-lg-mobile--line-height: 1.5rem;      /* 24px (16px × 1.5) */
+  --text-xl-mobile--line-height: 1.75rem;     /* 28px (18px × 1.56) */
+   
+   /* ===================================
+      SEMANTIC COLOR TOKENS FOR TAILWIND
+      Maps design hierarchy to semantic usage
+      =================================== */
+   
+   /* Surface Colors (Backgrounds) */
+   --color-surface-primary: hsl(var(--primary-dark));        /* neutral-900 - Main dark surfaces */
+   --color-surface-secondary: hsl(var(--tertiary-neutral));  /* neutral-800 - Secondary surfaces */
+   --color-surface-tertiary: hsl(var(--neutral-200));        /* Light grey surfaces */
+   --color-surface-extra-light: hsl(var(--neutral-50));      /* Extra light grey surfaces */
+   --color-surface-light: hsl(var(--primary-light));         /* White surfaces */
+   --color-surface-dark: hsl(var(--primary-dark));           /* Always dark surfaces */
+   
+   /* Content Colors (Text) */
+   --color-content-primary: hsl(var(--foreground));          /* Main text color */
+   --color-content-inverse: hsl(var(--background));          /* Inverse text color */
+   --color-content-secondary: hsl(0 72% 51%);                /* Red text for emphasis */
+   --color-content-muted: hsl(var(--muted-foreground));      /* Muted text */
+   --color-content-brand: hsl(0 72% 51%);                    /* Brand red text */
+   
+   /* Stroke Colors (Borders) */
+   --color-stroke-primary: hsl(var(--border));               /* Main borders */
+   --color-stroke-inverse: hsl(var(--background));           /* Inverse borders */
+   --color-stroke-secondary: hsl(0 72% 51%);                 /* Red borders */
+   --color-stroke-muted: hsl(var(--muted));                  /* Subtle borders */
+   
+   /* Interactive Colors (Buttons, Links) */
+   --color-interactive-primary: hsl(0 72% 51%);              /* Red - Primary actions */
+   --color-interactive-primary-hover: hsl(0 72% 51% / 0.9);
+   --color-interactive-secondary: hsl(0 0% 15%);             /* Neutral-800 - Secondary actions */
+   --color-interactive-secondary-hover: hsl(0 0% 25%);
+   
+   /* Badge Colors (UI Components) */
+   --color-badge-primary: hsl(var(--neutral-800));          /* Dark badges - primary emphasis */
+   --color-badge-secondary: hsl(var(--neutral-600));        /* Medium badges - secondary emphasis */
+   --color-badge-tertiary: hsl(var(--neutral-400));         /* Light badges - subtle emphasis */
+   
+   /* ===================================
+      TYPOGRAPHY - FONT SIZES & LINE HEIGHTS
+      From Figma design tokens
+      =================================== */
+   
+   /* Text Sizes - Desktop */
+   --font-size-xs: 0.75rem;       /* 12px */
+   --line-height-xs: 0.9rem;       /* 14.4px */
+   
+   --font-size-sm: 0.75rem;       /* 12px - same as xs in Figma */
+   --line-height-sm: 0.9rem;       /* 14.4px */
+   
+   --font-size-base: 1.125rem;     /* 18px - default body text desktop */
+   --line-height-base: 1.75rem;    /* 28px desktop */
+   
+   --font-size-base-mobile: 1rem;  /* 16px - default body text mobile */
+   --line-height-base-mobile: 1.5rem; /* 24px mobile */
+   
+   --font-size-lg: 1.125rem;       /* 18px */
+   --line-height-lg: 1.875rem;     /* 30px */
+   
+   --font-size-xl: 1.25rem;        /* 20px */
+   --line-height-xl: 2rem;         /* 32px */
+   
+   /* ===================================
+      TYPOGRAPHY - FONT WEIGHTS
+      =================================== */
+   
+   --font-weight-standard: 400;
+   --font-weight-medium: 500;
+   --font-weight-semibold: 600;
+   --font-weight-featured: 700;
+   --font-weight-extrabold: 800;
+   
+   /* ===================================
+      TYPOGRAPHY - LETTER SPACING
+      =================================== */
+   
+   --letter-spacing-header: -0.01em;    /* -1% for headers */
+   --letter-spacing-tight: -0.025em;    /* -2.5% tighter */
+   --letter-spacing-normal: 0em;        /* normal spacing */
+   --letter-spacing-wide: 0.025em;      /* 2.5% wider */
+   
+   /* ===================================
+      TYPOGRAPHY - LINE HEIGHTS
+      =================================== */
+   
+   --line-height-header-mobile: 0.8;    /* Mobile: tighter for compact display */
+   --line-height-header-desktop: 0.9;   /* Desktop: slightly more breathing room */
+   
+   /* ===================================
+      TYPOGRAPHY - COMPONENT SPECIFIC
+      Creates classes like text-navigation, font-button
+      =================================== */
+   
+   /* Navigation Typography */
+   --font-size-navigation: 1rem;          /* 16px - FINAL SIZE */
+   --line-height-navigation: 1.25rem;     /* 20px */
+   --font-weight-navigation: 700;         /* Bold */
+   
+   --font-size-navigation-small: 0.75rem; /* 12px */
+   --line-height-navigation-small: 0.875rem; /* 14px */
+   
+   /* Button Typography */
+   --font-size-button: 1rem;              /* 16px */
+   --line-height-button: 1.25rem;         /* 20px */
+   --font-weight-button: 600;             /* Semibold */
+   
+   /* Field Typography */
+   --font-size-field: 0.875rem;           /* 14px */
+   --line-height-field: 1rem;             /* 16px */
+   
+   /* Breadcrumb Typography */
+   --font-size-breadcrumb: 0.75rem;       /* 12px */
+   --line-height-breadcrumb: 0.875rem;    /* 14px */
+
+  /* Body Content Typography - Semantic Classes */
+  --font-size-intro: 1.875rem;           /* 30px - Introduction text */
+  --line-height-intro: 2.4rem;           /* 38.4px */
+  --font-weight-intro: 300;              /* Light weight */
+
+  --font-size-body-xl: 1.25rem;          /* 20px - Large body text */
+  --line-height-body-xl: 2rem;           /* 32px */
+  --font-weight-body-xl: 400;            /* Regular weight */
+
+  --font-size-quote: 1.5rem;             /* 24px - Standard quotes */
+  --line-height-quote: 2rem;             /* 32px */
+  --font-weight-quote: 500;              /* Medium weight */
+
+  --font-size-quote-featured: 1.875rem;  /* 30px - Featured quotes */
+  --line-height-quote-featured: 2.5rem;  /* 40px */
+  --font-weight-quote-featured: 500;     /* Medium weight */
+   
+   /* ===================================
+      LAYOUT & SIZING
+      =================================== */
+   
+   /* Container Max Widths (content width excluding padding) */
+   --container-outer: 93.75rem;  /* 1500px - Outer container */
+   --container-inner: 73.75rem;  /* 1180px - Inner container */
+   --width-text: 49rem;          /* 784px - Readable text width */
+   
+   /* Container Gutters (padding on each side) */
+   --gutter-mobile: 1.5rem;      /* 24px - Mobile gutter for content */
+   --gutter-tablet: 1.5rem;      /* 24px - Tablet gutter */
+   --gutter-desktop: 4rem;       /* 64px - Desktop gutter for content */
+   --gutter-wide: 8rem;          /* 128px - Wide screen gutter */
+  
+  /* Navigation specific gutters */
+  --gutter-nav-mobile: 1rem;    /* 16px - Mobile gutter for nav */
+  --gutter-nav-desktop: 2rem;   /* 32px - Desktop gutter for nav */
+   
+   /* Total Container Widths (including gutters) */
+   /* Mobile: 1500px + 32px (2 × 16px) = 1532px */
+   /* Desktop: 1500px + 64px (2 × 32px) = 1564px */
+   /* Wide: 1500px + 96px (2 × 48px) = 1596px */
+   
+   /* Legacy naming for backwards compatibility */
+   --width-section: var(--container-outer);  /* 1500px */
+   --width-main: var(--container-inner);     /* 1180px */
+   
+   /* ===================================
+      SPACING SCALE
+      =================================== */
+   
+   --spacing-section: 6rem;     /* 96px - between sections */
+   --spacing-component: 3rem;   /* 48px - between components */
+   --spacing-card: 2rem;        /* 32px - card padding */
+   --spacing-element: 1.5rem;   /* 24px - between elements */
+   --spacing-compact: 1rem;     /* 16px - compact spacing */
+   --spacing-tight: 0.5rem;     /* 8px - tight spacing */
+   
+   /* Mobile spacing variants - ~65% of desktop for better proportions */
+   --spacing-section-mobile: 4rem;      /* 64px mobile */
+   --spacing-component-mobile: 2rem;    /* 32px mobile */
+   --spacing-card-mobile: 1.5rem;       /* 24px mobile */
+   --spacing-element-mobile: 1rem;      /* 16px mobile */
+   --spacing-compact-mobile: 0.75rem;   /* 12px mobile */
+   --spacing-tight-mobile: 0.5rem;      /* 8px mobile - same */
+   
+   /* ===================================
+      BORDER RADIUS
+      =================================== */
+   
+   --radius-button: 0.375rem;   /* 6px */
+   --radius-card: 0.5rem;       /* 8px */
+   --radius-input: 0.375rem;    /* 6px */
+   --radius-modal: 0.75rem;     /* 12px */
+   
+   /* ===================================
+      SHADOWS (for Tailwind utilities)
+      =================================== */
+   
+   --shadow-button: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+   --shadow-card: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+   --shadow-dropdown: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+   --shadow-modal: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+   
+   /* ===================================
+      Z-INDEX SCALE
+      =================================== */
+   
+   --z-dropdown: 1000;
+   --z-sticky: 1010;
+   --z-navigation: 1020;
+   --z-overlay: 1030;
+   --z-modal: 1040;
+   --z-popover: 1050;
+   --z-tooltip: 1060;
+   
+   /* ===================================
+      BREAKPOINTS
+      Single breakpoint system for simplicity
+      =================================== */
+   
+   /* Primary breakpoint - Desktop/Mobile divide */
+   --breakpoint-desktop: 48rem;  /* 768px - Standard tablet/desktop breakpoint */
+   
+   /* Optional reference points (not used in containers) */
+   --breakpoint-wide: 90rem;     /* 1440px - Wide desktop */
+   --breakpoint-max: 100rem;     /* 1600px - Maximum design width */
+ }
+ 
+ /* ===================================
+    BASE STYLES
+    Default body text and global settings
+    =================================== */
+ 
+ @layer base {
+   /* Default body text settings - font is set by Next.js className */
+   body {
+     font-size: var(--font-size-base);      /* 18px desktop */
+     line-height: var(--line-height-base);   /* 28px desktop */
+     font-weight: 300; /* Light weight for all body text */
+     color: hsl(var(--foreground));
+     background-color: hsl(var(--background));
+     -webkit-font-smoothing: antialiased;
+     -moz-osx-font-smoothing: grayscale;
+   }
+   
+   /* Responsive body text */
+   @media (max-width: 767px) {
+     body {
+       font-size: var(--font-size-base-mobile); /* 16px mobile */
+      line-height: var(--line-height-base-mobile); /* 24px mobile */
+     }
+   }
+   
+   /* Default heading styles using your font weights */
+   h1, h2, h3, h4, h5, h6 {
+     font-weight: var(--font-weight-featured); /* 700 */
+   }
+   
+   /* Links */
+   a {
+     color: hsl(var(--secondary)); /* Red links */
+     text-decoration: none;
+   }
+   
+   a:hover {
+     text-decoration: underline;
+   }
+   
+   /* Strong text uses featured weight */
+   strong, b {
+     font-weight: var(--font-weight-featured); /* 700 */
+   }
+ }
+ 
+ @layer utilities {
+   /* Width utilities for design system containers */
+   .w-text { 
+    max-width: var(--width-text); /* 784px - Readable text width */
+    width: 100%; /* Ensure it doesn't exceed container width on mobile */
+  }
+   
+   
+   .text-button {
+     font-size: var(--font-size-button);
+     line-height: var(--line-height-button);
+   }
+   
+   .font-button {
+     font-weight: var(--font-weight-button);
+   }
+   
+   .text-field {
+     font-size: var(--font-size-field);
+     line-height: var(--line-height-field);
+   }
+   
+   .text-breadcrumb {
+     font-size: var(--font-size-breadcrumb);
+     line-height: var(--line-height-breadcrumb);
+   }
+
+   /* Letter spacing utilities */
+   .tracking-header { letter-spacing: var(--letter-spacing-header); }
+   .tracking-tight-custom { letter-spacing: var(--letter-spacing-tight); }
+   .tracking-normal-custom { letter-spacing: var(--letter-spacing-normal); }
+   .tracking-wide-custom { letter-spacing: var(--letter-spacing-wide); }
+   
+   /* Line height utilities - responsive */
+   .leading-header { 
+     line-height: var(--line-height-header-mobile); 
+   }
+   
+   @media (min-width: 768px) {
+     .leading-header { 
+       line-height: var(--line-height-header-desktop); 
+     }
+   }
+   
+   /* Base container setup */
+   .container-outer,
+   .container-inner {
+     width: 100%;
+     margin-left: auto;
+     margin-right: auto;
+   }
+   
+   /* Mobile-first approach (default) */
+   .container-outer {
+     max-width: calc(var(--container-outer) + 2 * var(--gutter-mobile));
+     padding-left: var(--gutter-mobile);
+     padding-right: var(--gutter-mobile);
+   }
+   
+   .container-inner {
+     max-width: calc(var(--container-inner) + 2 * var(--gutter-mobile));
+     padding-left: var(--gutter-mobile);
+     padding-right: var(--gutter-mobile);
+   }
+   
+   /* Desktop (768px and up) */
+   @media (min-width: 768px) {
+     .container-outer {
+       max-width: calc(var(--container-outer) + 2 * var(--gutter-desktop));
+       padding-left: var(--gutter-desktop);
+       padding-right: var(--gutter-desktop);
+     }
+     
+     .container-inner {
+       max-width: calc(var(--container-inner) + 2 * var(--gutter-desktop));
+       padding-left: var(--gutter-desktop);
+       padding-right: var(--gutter-desktop);
+     }
+   }
+   
+   /* No-padding variants */
+   .container-outer-no-pad,
+   .container-inner-no-pad {
+     width: 100%;
+     margin-left: auto;
+     margin-right: auto;
+     padding-left: 0;
+     padding-right: 0;
+   }
+   
+   .container-outer-no-pad {
+     max-width: var(--container-outer); /* Exactly 1500px */
+   }
+   
+   .container-inner-no-pad {
+     max-width: var(--container-inner); /* Exactly 1180px */
+   }
+   
+   /* Fluid container */
+   .container-fluid {
+     width: 100%;
+     padding-left: var(--gutter-mobile);
+     padding-right: var(--gutter-mobile);
+   }
+   
+   @media (min-width: 768px) {
+     .container-fluid {
+       padding-left: var(--gutter-desktop);
+       padding-right: var(--gutter-desktop);
+     }
+   }
+   /* Title Typography Classes */
+   .title-2xl {
+     font-size: 1.5rem;      /* 24px desktop */
+     line-height: 1.1;       /* Tight line height */
+     letter-spacing: var(--letter-spacing-header);
+    }
+   
+   .title-3xl {
+     font-size: 1.875rem;    /* 30px desktop */
+     line-height: 1.1;       /* Tight line height */
+     letter-spacing: var(--letter-spacing-header);
+    }
+   
+   .title-4xl {
+     font-size: 2.25rem;     /* 36px desktop */
+     line-height: 1.1;       /* Tight line height */
+     letter-spacing: var(--letter-spacing-header);
+    }
+   
+   .title-5xl {
+     font-size: 3rem;        /* 48px desktop */
+     line-height: 1.1;       /* Tight line height */
+     letter-spacing: var(--letter-spacing-header);
+    }
+   
+   /* Hero-specific title sizing */
+   .title-hero {
+     font-size: 3.75rem;     /* 60px desktop */
+     line-height: 1.1;       /* Tight line height */
+     letter-spacing: var(--letter-spacing-header);
+    }
+   
+   .title-6xl {
+     font-size: 3.75rem;     /* 60px desktop */
+     line-height: 1.1;       /* Tight line height */
+     letter-spacing: var(--letter-spacing-header);
+    }
+   
+   .title-7xl {
+     font-size: 4.5rem;      /* 72px desktop */
+     line-height: 1.1;       /* Tight line height */
+     letter-spacing: var(--letter-spacing-header);
+    }
+   
+   .title-8xl {
+     font-size: 6rem;        /* 96px desktop */
+     line-height: 1.1;       /* Tight line height */
+     letter-spacing: var(--letter-spacing-header);
+    }
+   
+   .title-9xl {
+     font-size: 8rem;        /* 128px desktop */
+     line-height: 1.1;       /* Tight line height */
+     letter-spacing: var(--letter-spacing-header);
+    }
+   
+   /* Mobile responsive title sizes - Single breakpoint */
+   @media (max-width: 767px) {
+     .title-2xl {
+       font-size: 1.375rem;   /* 22px mobile */
+       line-height: 1.1;      /* Tight line height */
+       letter-spacing: var(--letter-spacing-header);
+     }
+     
+     .title-3xl {
+       font-size: 1.75rem;    /* 28px mobile */
+       line-height: 1.1;      /* Tight line height */
+       letter-spacing: var(--letter-spacing-header);
+     }
+     
+     .title-4xl {
+       font-size: 2rem;       /* 32px mobile */
+       line-height: 1.1;      /* Tight line height */
+       letter-spacing: var(--letter-spacing-header);
+     }
+     
+     .title-5xl {
+       font-size: 1.75rem;    /* 28px mobile */
+       line-height: 1.1;      /* Tight line height */
+       letter-spacing: var(--letter-spacing-header);
+     }
+     
+     /* Hero-specific mobile sizing */
+     .title-hero {
+       font-size: 2.25rem;    /* 36px mobile */
+       line-height: 1.1;      /* Tight line height */
+       letter-spacing: var(--letter-spacing-header);
+     }
+     
+     .title-6xl,
+     .title-7xl,
+     .title-8xl,
+     .title-9xl {
+       font-size: 2.75rem;    /* 44px mobile - capped */
+       line-height: 1.1;      /* Tight line height */
+       letter-spacing: var(--letter-spacing-header);
+     }
+   }
+   
+   /* Font weight utilities for your design system */
+   .font-standard {
+     font-weight: 400;
+   }
+   
+   .font-featured {
+    font-weight: 700;
+  }
+
+  /* Font family utilities - inherit from Next.js body font */
+
+ /* Body Content Typography Classes */
+ .text-body {
+   font-size: var(--font-size-base);
+   line-height: var(--line-height-base);
+   font-weight: var(--font-weight-standard);
+ }
+
+ .text-intro {
+   font-size: var(--font-size-intro);
+   line-height: var(--line-height-intro);
+   font-weight: var(--font-weight-intro);
+   letter-spacing: -0.01em;
+ }
+
+ .text-body-xl {
+   font-size: var(--font-size-body-xl);
+   line-height: var(--line-height-body-xl);
+   font-weight: var(--font-weight-body-xl);
+ }
+
+ .text-quote {
+   font-size: var(--font-size-quote);
+   line-height: var(--line-height-quote);
+   font-weight: var(--font-weight-quote);
+   letter-spacing: -0.01em;
+ }
+
+ .text-quote-featured {
+   font-size: var(--font-size-quote-featured);
+   line-height: var(--line-height-quote-featured);
+   font-weight: var(--font-weight-quote-featured);
+   letter-spacing: -0.01em;
+ }
+
+ /* Adaptive typography classes - same specs but color adapts to background context */
+ .text-intro-adaptive {
+   font-size: var(--font-size-intro);
+   line-height: var(--line-height-intro);
+   font-weight: var(--font-weight-intro);
+   letter-spacing: -0.01em;
+   color: var(--text-adaptive);
+ }
+
+ .text-quote-adaptive {
+   font-size: var(--font-size-quote);
+   line-height: var(--line-height-quote);
+   font-weight: var(--font-weight-quote);
+   letter-spacing: -0.01em;
+   color: var(--text-adaptive);
+ }
+
+ .text-quote-featured-adaptive {
+   font-size: var(--font-size-quote-featured);
+   line-height: var(--line-height-quote-featured);
+   font-weight: var(--font-weight-quote-featured);
+   letter-spacing: -0.01em;
+   color: var(--text-adaptive);
+ }
+
+ .text-body-xl-adaptive {
+   font-size: var(--font-size-body-xl);
+   line-height: var(--line-height-body-xl);
+   font-weight: var(--font-weight-body-xl);
+   color: var(--text-adaptive);
+ }
+
+ .text-body-adaptive {
+   font-size: var(--font-size-base);
+   line-height: var(--line-height-base);
+   font-weight: var(--font-weight-standard);
+   color: var(--text-adaptive);
+ }
+
+ .text-adaptive {
+   color: var(--text-adaptive);
+ }
+
+ .cta-button-adaptive {
+   color: var(--text-adaptive);
+   border-color: var(--text-adaptive);
+ }
+
+ /* Background contexts set the adaptive text color */
+ [data-background="light"] {
+   --text-adaptive: var(--color-content-primary);
+ }
+
+ [data-background="dark"] {
+   --text-adaptive: var(--color-content-inverse);
+ }
+
+
+ /* Mobile responsive body content sizes */
+ @media (max-width: 767px) {
+   .text-body {
+    font-size: var(--font-size-base-mobile);
+    line-height: var(--line-height-base-mobile);
+  }
+
+  .text-intro {
+     font-size: 1.5rem;      /* 24px mobile */
+     line-height: 2rem;      /* 32px mobile */
+   }
+
+   .text-body-xl {
+     font-size: 1.125rem;    /* 18px mobile */
+     line-height: 1.75rem;   /* 28px mobile */
+   }
+
+   .text-quote {
+     font-size: 1.25rem;     /* 20px mobile */
+     line-height: 1.75rem;   /* 28px mobile */
+   }
+
+   .text-quote-featured {
+     font-size: 1.5rem;      /* 24px mobile */
+     line-height: 2rem;      /* 32px mobile */
+   }
+
+   /* Adaptive classes mobile overrides */
+   .text-intro-adaptive {
+     font-size: 1.5rem;      /* 24px mobile */
+     line-height: 2rem;      /* 32px mobile */
+   }
+
+   .text-quote-adaptive {
+     font-size: 1.25rem;     /* 20px mobile */
+     line-height: 1.75rem;   /* 28px mobile */
+   }
+
+   .text-quote-featured-adaptive {
+     font-size: 1.5rem;      /* 24px mobile */
+     line-height: 2rem;      /* 32px mobile */
+   }
+
+   .text-body-xl-adaptive {
+     font-size: 1.125rem;    /* 18px mobile */
+     line-height: 1.75rem;   /* 28px mobile */
+   }
+
+   .text-body-adaptive {
+     font-size: var(--font-size-base-mobile);    /* 14px mobile */
+     line-height: var(--line-height-base-mobile); /* tighter mobile */
+   }
+ }
+  
+  /* Navigation container - 1500px with small gutters */
+  .container-nav {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: calc(var(--container-outer) + 2 * var(--gutter-nav-mobile));
+    padding-left: var(--gutter-nav-mobile);
+    padding-right: var(--gutter-nav-mobile);
+  }
+  
+  @media (min-width: 768px) {
+    .container-nav {
+      max-width: calc(var(--container-outer) + 2 * var(--gutter-nav-desktop));
+      padding-left: var(--gutter-nav-desktop);
+      padding-right: var(--gutter-nav-desktop);
+    }
+  }
+
+  /* Gallery scrollable container - starts at content line, extends to viewport edge */
+  .gallery-scroll-container {
+    /* Start at same position as container-inner-no-pad elements */
+    margin-left: 0; /* On mobile, container-inner-no-pad aligns to left of container-outer */
+    margin-right: calc(-1 * var(--gutter-mobile)); /* Extend past container padding */
+    padding-right: var(--gutter-mobile); /* Add padding back for last card */
+  }
+  
+  /* When screen is wide enough that container-inner gets centered */
+  @media (min-width: calc(var(--container-inner) + 2 * var(--gutter-mobile))) {
+    .gallery-scroll-container {
+      /* Desktop: start at centered 1180px position */
+      margin-left: calc((100% - var(--container-inner)) / 2);
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .gallery-scroll-container {
+      margin-right: calc(-1 * var(--gutter-desktop)); /* Desktop: extend past container padding */
+      padding-right: var(--gutter-desktop); /* Desktop: add padding back for last card */
+    }
+  }
+
+  /* Responsive text utilities for mobile variants */
+  @media (max-width: 767px) {
+    .text-base {
+      font-size: var(--text-base-mobile);
+      line-height: var(--text-base-mobile--line-height);
+    }
+    
+    .text-lg {
+      font-size: var(--text-lg-mobile);
+      line-height: var(--text-lg-mobile--line-height);
+    }
+    
+    .text-xl {
+      font-size: var(--text-xl-mobile);
+      line-height: var(--text-xl-mobile--line-height);
+    }
+  }
+
+}
+
+/* NAVIGATION OVERRIDE - OUTSIDE LAYERS FOR MAXIMUM PRIORITY */
+nav [data-slot="navigation-menu-link"].text-navigation,
+nav .text-navigation,
+[data-slot="navigation-menu-link"].text-navigation,
+.text-navigation {
+  font-size: 1rem !important; /* 16px */
+  line-height: 1.25rem !important; /* 20px */
+}
+
+[data-slot="navigation-menu-link"].font-navigation,
+.font-navigation {
+  font-weight: 700 !important;
+  font-size: 1rem !important; /* 16px */
+}
+
+/* ===================================
+   LOGO COLOR ADAPTATION
+   Automatically adapt SVG logos for light/dark backgrounds
+   =================================== */
+
+/* Hero sections: Always use white logos since hero backgrounds have dark overlays */
+[data-nav-theme="dark"] .hero-client-logo {
+  /* Convert any logo color to white for dark hero backgrounds */
+  filter: brightness(0) invert(1);
+}
+
+/* For future use: Light backgrounds would use dark logos */
+[data-nav-theme="light"] .hero-client-logo {
+  /* Convert any logo color to dark for light backgrounds */
+  filter: brightness(0) invert(0);
+}
+
+/* Logo height standardization containers */
+.logo-container {
+  height: 32px; /* Standard logo height (h-8) */
+  display: flex;
+  align-items: center; /* Center logos vertically */
+  justify-content: flex-start; /* Align left */
+  /* DEBUG: Uncomment to see container bounds */
+  /* border: 1px solid red; */
+}
+
+.logo-container-large {
+  height: 40px; /* Larger logo height (h-10) for desktop */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  /* DEBUG: Border for large containers */
+  /* border: 1px solid blue; */
+}
+
+/* Standardized logo sizing within containers */
+.logo-standardized {
+  height: 32px !important; /* Force exact height */
+  width: auto !important;
+  object-fit: contain !important;
+  max-height: none !important;
+  max-width: none !important;
+}
+
+/* Large logo containers */
+.logo-container-large .logo-standardized {
+  height: 40px !important; /* Force exact height for large containers */
+}
+
+/* Case study cards: Adapt logos based on card background */
+.case-study-card-logo {
+  /* Default: white logos for dark card backgrounds */
+  filter: brightness(0) invert(1);
+}
+
+/* Light card backgrounds would use dark logos */
+[data-theme="light"] .case-study-card-logo,
+.bg-surface-light .case-study-card-logo {
+  filter: brightness(0) invert(0);
+}

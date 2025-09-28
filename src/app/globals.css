@@ -1,0 +1,225 @@
+/**
+ * Global Styles
+ * Imports Tailwind and theme, adds app-specific utilities
+ */
+
+ @import "tailwindcss";
+ @import "../styles/theme.css";
+ @import "../styles/cursor.css";
+ 
+ @layer base {
+   /* Viewport height custom property for mobile browsers */
+   :root {
+     --vh: 1vh;
+   }
+   
+   /* Remove default margins */
+   * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+   }
+ }
+ 
+ @layer utilities {
+   /* Hide scrollbar utilities */
+   .scrollbar-hide::-webkit-scrollbar {
+     display: none;
+   }
+   
+   .scrollbar-hide {
+     -ms-overflow-style: none;  /* IE and Edge */
+     scrollbar-width: none;     /* Firefox */
+   }
+   
+   /* Navigation theme utilities */
+   .nav-light .nav-link,
+   .nav-light .nav-logo,
+   .nav-light .nav-icon,
+   .nav-light .nav-mobile-button {
+     color: white;
+   }
+   
+   .nav-light .nav-cta {
+     color: white;
+     border-color: white;
+   }
+   
+   .nav-light .nav-cta:hover {
+     background-color: white;
+     color: hsl(var(--primary-dark));
+   }
+   
+   .nav-dark .nav-link,
+   .nav-dark .nav-logo, 
+   .nav-dark .nav-icon,
+   .nav-dark .nav-mobile-button {
+     color: hsl(var(--primary-dark));
+   }
+   
+   .nav-dark .nav-cta {
+     color: hsl(var(--primary-dark));
+     border-color: hsl(var(--primary-dark));
+   }
+   
+   .nav-dark .nav-cta:hover {
+     background-color: hsl(var(--primary-dark));
+     color: white;
+   }
+   
+   /* Smooth transitions for navigation elements */
+   .nav-link,
+   .nav-logo,
+   .nav-icon,
+   .nav-cta,
+   .nav-mobile-button {
+     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+   }
+   
+   /* Blend mode utilities (if needed) */
+   .nav-blend-mode {
+     position: relative;
+   }
+   
+   .nav-blend-mode .blend-nav {
+     background-color: white;
+     mix-blend-mode: difference;
+   }
+   
+   .nav-blend-mode .blend-nav * {
+     mix-blend-mode: normal;
+   }
+   
+ }
+
+/* Enhanced focus indicators for accessibility */
+@layer utilities {
+  .focus-visible-ring {
+    @apply focus-visible:ring-2 focus-visible:ring-interactive-primary focus-visible:ring-offset-2 focus-visible:outline-none;
+  }
+  
+  .focus-visible-ring-white {
+    @apply focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:outline-none;
+  }
+  
+  /* Optimized animations that use GPU compositing */
+  .animate-optimized {
+    will-change: transform;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+  }
+  
+  /* Replace width animations with transform for better performance */
+  .animate-width-scale {
+    transform-origin: left;
+    animation: scaleX 0.3s ease-out;
+  }
+  
+  @keyframes scaleX {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+  
+  /* Optimized stroke-dasharray animation */
+  .animate-draw {
+    animation: drawStroke 2s ease-out forwards;
+  }
+  
+  @keyframes drawStroke {
+    from { stroke-dashoffset: 100%; }
+    to { stroke-dashoffset: 0; }
+  }
+
+  /* Hero text animations */
+  @keyframes slideUp {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideDown {
+    from {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+  }
+
+  .duration-600 {
+    transition-duration: 600ms;
+  }
+
+  .duration-800 {
+    transition-duration: 800ms;
+  }
+
+  /* ===================================
+     ANIMATED XFLO LOGO STYLES
+     =================================== */
+
+  /* WebP/GIF fallback logic */
+  .xflo-logo .w.webp {
+    display: block;
+  }
+
+  .xflo-logo .w.gif {
+    display: none;
+  }
+
+  .xflo-logo .w.static {
+    display: none;
+  }
+
+  /* If no WebP support, show GIF instead */
+  .no-webp .xflo-logo .w.webp {
+    display: none;
+  }
+
+  .no-webp .xflo-logo .w.gif {
+    display: block;
+  }
+
+  /* Reduced motion: hide animations, show static */
+  @media (prefers-reduced-motion: reduce) {
+    .xflo-logo .w.webp,
+    .xflo-logo .w.gif {
+      display: none;
+    }
+
+    .xflo-logo .w.static {
+      display: block;
+    }
+  }
+
+  /* xFlo logo color theming */
+  /* Default: black logo */
+  .xflo-logo {
+    display: block;
+    filter: none;
+  }
+
+  /* Invert to white for dark backgrounds (nav-light class) */
+  .nav-light.xflo-logo {
+    filter: invert(1);
+  }
+
+  /* Keep black for light backgrounds (nav-dark class) */
+  .nav-dark.xflo-logo {
+    filter: none;
+  }
+
+  /* Logo sizing and responsiveness */
+  .xflo-logo {
+    height: auto;
+    max-width: 100%;
+  }
+
+}
