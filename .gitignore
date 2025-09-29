@@ -67,3 +67,5 @@ dev_server.pid
 
 # Old structure (deprecated)
 nextjs-app/
+.env
+.mcp.json
