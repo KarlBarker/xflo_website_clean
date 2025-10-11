@@ -8,8 +8,8 @@ import { getNavigationData, getFooterData } from '@/lib/navigation';
 import { cn } from '@/lib/utils';
 
 // Enable ISR with on-demand revalidation via webhooks
-// No caching in development/staging for instant CMS updates
-export const revalidate = process.env.NODE_ENV === 'production' ? 3600 : 0;
+// Set to 0 for instant updates (use environment variable for production caching)
+export const revalidate = 0; // No caching - instant updates from CMS
 
 // Generate static params to ensure homepage is pre-generated
 export async function generateStaticParams() {
