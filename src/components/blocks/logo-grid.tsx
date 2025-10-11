@@ -35,6 +35,9 @@ export function LogoGrid({
 
   const navTheme = backgroundColor === 'primary' ? 'dark' : 'light';
 
+  // Determine if background is dark to apply logo inversion
+  const isDarkBackground = backgroundColor === 'primary';
+
   // Grid columns configuration for different screen sizes
   const gridColsClass = {
     3: 'grid-cols-2 md:grid-cols-3',
@@ -44,8 +47,8 @@ export function LogoGrid({
   }[columns];
 
   return (
-    <section 
-      className={cn('w-full', bgClass, className)} 
+    <section
+      className={cn('w-full', bgClass, className)}
       data-nav-theme={navTheme}
     >
       <div className="container-outer">
@@ -57,7 +60,7 @@ export function LogoGrid({
             {logos.map((logo) => {
               const logoSrc = getMediaUrl(logo.image);
               const LogoWrapper = logo.url ? 'a' : 'div';
-              
+
               return (
                 <LogoWrapper
                   key={logo.id}
@@ -65,15 +68,19 @@ export function LogoGrid({
                   target={logo.url ? '_blank' : undefined}
                   rel={logo.url ? 'noopener noreferrer' : undefined}
                   className={cn(
-                    'relative flex items-center justify-center bg-white rounded-lg p-1 md:p-2 h-24 md:h-[156px]',
-                    logo.url && 'cursor-pointer'
+                    'relative flex items-center justify-center rounded-lg p-1 md:p-2 h-24 md:h-[156px]',
+                    logo.url && 'cursor-pointer',
+                    'transition-opacity hover:opacity-80'
                   )}
                 >
                   <Image
                     src={logoSrc}
                     alt={logo.alt || logo.name || 'Client logo'}
                     fill
-                    className="object-contain"
+                    className={cn(
+                      'object-contain',
+                      isDarkBackground && 'invert brightness-0'
+                    )}
                   />
                 </LogoWrapper>
               );
