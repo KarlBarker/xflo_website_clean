@@ -131,7 +131,7 @@ export async function getCaseStudyBySlug(slug: string): Promise<CaseStudy | null
         slug: { equals: slug }
       },
       limit: 1,
-      depth: 2
+      depth: 3 // Depth=3 required for nested blocks with media relationships
     });
     
     return response.docs[0] || null;
@@ -146,15 +146,15 @@ export async function getCaseStudiesForGallery(excludeId?: string, limit: number
     const where: Record<string, unknown> = {
       status: { equals: 'published' }
     };
-    
+
     if (excludeId) {
       where.id = { not_equals: excludeId };
     }
-    
+
     const response = await getCaseStudies({
       where,
       limit,
-      depth: 2 // Include client relationships
+      depth: 3 // Depth=3 required for nested blocks with media relationships
     });
     
     return response.docs;
@@ -167,11 +167,11 @@ export async function getCaseStudiesForGallery(excludeId?: string, limit: number
 export async function getCaseStudiesForBento(limit?: number): Promise<CaseStudy[]> {
   try {
     const response = await getCaseStudies({
-      where: { 
+      where: {
         status: { equals: 'published' }
       },
       limit: limit || 100, // Default to large number if no limit
-      depth: 2 // Include client relationships
+      depth: 3 // Depth=3 required for nested blocks with media relationships
     });
     
     return response.docs;
@@ -220,6 +220,17 @@ export async function getResultsGallery(): Promise<ResultsGallery | null> {
   }
 }
 
+// Fetch media by ID when relationship wasn't populated
+export async function fetchMediaById(id: number | string): Promise<Media | null> {
+  try {
+    const response = await payloadFetch<Media>(`/media/${id}`);
+    return response;
+  } catch (error) {
+    console.error(`Failed to fetch media with ID: ${id}`, error);
+    return null;
+  }
+}
+
 // Media API helpers
 export function getMediaUrl(media: Media | string | number | null | undefined): string {
   // Handle null/undefined media
@@ -228,10 +239,11 @@ export function getMediaUrl(media: Media | string | number | null | undefined): 
   }
 
   // Handle numeric ID - CMS didn't populate the relationship
-  // Return a direct media API URL
+  // We can't fetch it here (this is a sync function), so return placeholder
+  // The dynamic-page component should handle this by fetching the media separately
   if (typeof media === 'number') {
-    console.warn(`⚠️ Media relationship not populated, got ID: ${media}`);
-    return `${API_CONFIG.PAYLOAD_URL}/media/file/${media}`;
+    console.warn(`⚠️ Media relationship not populated, got ID: ${media}. Use fetchMediaById() to get the URL.`);
+    return '/placeholder-image.jpg';
   }
 
   // Base URL without /api since media URLs include it
@@ -439,6 +451,7 @@ export interface IntroductionBlock extends CaseStudyBlock {
   eyebrow?: string;
   text: string;
   backgroundColor?: string;
+  textColor?: string; // CMS text color: 'auto', 'light', 'dark', 'brand'
   variant?: 'default' | 'large';
   spacingTop?: 'none' | 'tight' | 'compact' | 'element' | 'component' | 'section';
   spacingBottom?: 'none' | 'tight' | 'compact' | 'element' | 'component' | 'section';
@@ -814,7 +827,7 @@ export async function getPageBySlug(slug: string): Promise<Page | null> {
       params.append('where[slug][equals]', slugToTry);
       params.append('where[status][equals]', 'published');
       params.append('limit', '1');
-      params.append('depth', '5'); // Increased depth to populate nested media relationships in blocks
+      params.append('depth', '3'); // Depth=3 required for nested blocks: Page → layout[] → block → media
       
       const queryString = params.toString();
       console.log(`Fetching page with slug: ${slugToTry}`);

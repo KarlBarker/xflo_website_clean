@@ -162,14 +162,15 @@ export function DynamicPage({ page }: DynamicPageProps) {
       case 'introduction':
         // Get nav theme context
         const { bgContext } = getBackgroundTheme(block.backgroundColor);
-        
+
         return (
           <div key={key} data-nav-theme={bgContext}>
-            <IntroductionSection 
+            <IntroductionSection
               eyebrow={block.eyebrow}
               text={block.text}
               variant={block.variant}
               backgroundColor={block.backgroundColor}
+              textColor={block.textColor}
               spacingTop={block.spacingTop}
               spacingBottom={block.spacingBottom}
             />
