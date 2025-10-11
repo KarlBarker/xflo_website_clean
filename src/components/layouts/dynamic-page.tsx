@@ -476,12 +476,21 @@ export function DynamicPage({ page }: DynamicPageProps) {
         const { topClass: servicesTopClass, bottomClass: servicesBottomClass } = getSpacingClasses(block.spacingTop, block.spacingBottom);
         const servicesBgClass = {
           'white': 'bg-surface-light',
+          'White': 'bg-surface-light',
+          'light gray': 'bg-surface-tertiary',
+          'Light Gray': 'bg-surface-tertiary',
           'light-gray': 'bg-surface-tertiary',
-          'primary': 'bg-surface-primary'
+          'primary': 'bg-surface-primary',
+          'primary dark': 'bg-surface-primary',
+          'Primary Dark': 'bg-surface-primary',
+          'primary-dark': 'bg-surface-primary'
         }[block.backgroundColor as string] || 'bg-surface-light';
-        
+
+        // Check if background is dark for nav theme
+        const isDarkBackground = ['primary', 'primary dark', 'Primary Dark', 'primary-dark'].includes(block.backgroundColor as string);
+
         return (
-          <div key={key} data-nav-theme={block.backgroundColor === 'primary' ? 'dark' : 'light'}>
+          <div key={key} data-nav-theme={isDarkBackground ? 'dark' : 'light'}>
             <ServicesSection
               eyebrow={block.eyebrow}
               headline={block.headline}
