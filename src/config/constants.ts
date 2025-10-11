@@ -21,10 +21,12 @@ export const DEV_CONFIG = {
 
 // Cache Configuration
 export const CACHE_CONFIG = {
-  DEFAULT_REVALIDATE: 60, // 1 minute
-  PAGE_REVALIDATE: 3600,  // 1 hour
-  CASE_STUDY_REVALIDATE: 1800, // 30 minutes
-  NAVIGATION_REVALIDATE: 300    // 5 minutes
+  // No caching in development/staging for instant updates
+  // Production uses ISR with on-demand revalidation via webhooks
+  DEFAULT_REVALIDATE: process.env.NODE_ENV === 'production' ? 60 : 0,
+  PAGE_REVALIDATE: process.env.NODE_ENV === 'production' ? 3600 : 0,
+  CASE_STUDY_REVALIDATE: process.env.NODE_ENV === 'production' ? 1800 : 0,
+  NAVIGATION_REVALIDATE: process.env.NODE_ENV === 'production' ? 300 : 0
 } as const;
 
 // UI Configuration

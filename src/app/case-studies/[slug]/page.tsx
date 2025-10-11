@@ -101,7 +101,8 @@ const ProjectsGallery = dynamic(() => import('@/components/blocks/projects-galle
 const CMSFooter = dynamic(() => import('@/components/blocks/cms-footer').then(mod => ({ default: mod.CMSFooter })));
 
 // Enable ISR with on-demand revalidation via webhooks
-export const revalidate = 60; // Fallback: 1 minute (webhook will trigger instant updates)
+// No caching in development/staging for instant CMS updates
+export const revalidate = process.env.NODE_ENV === 'production' ? 60 : 0;
 
 interface CaseStudyPageProps {
   params: Promise<{ slug: string }>;
