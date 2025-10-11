@@ -17,15 +17,15 @@ export async function generateStaticParams() {
 }
 
 export default async function HomePage() {
-  // Homepage always uses 'home' slug from CMS
+  // Homepage uses '/home' slug from CMS
   const [pageData, navigationData, footerData] = await Promise.all([
-    getPageBySlug('home'),
+    getPageBySlug('/home'),
     getNavigationData(),
     getFooterData()
   ]);
 
   if (!pageData) {
-    console.error('Homepage not found in CMS with slug: home');
+    console.error('Homepage not found in CMS with slug: /home');
     notFound();
   }
 
@@ -47,7 +47,7 @@ export default async function HomePage() {
 
 // Generate metadata for SEO
 export async function generateMetadata() {
-  const page = await getPageBySlug('home');
+  const page = await getPageBySlug('/home');
   
   if (!page) {
     return {
