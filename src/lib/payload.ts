@@ -807,7 +807,7 @@ export async function getPageBySlug(slug: string): Promise<Page | null> {
       params.append('where[slug][equals]', slugToTry);
       params.append('where[status][equals]', 'published');
       params.append('limit', '1');
-      params.append('depth', '3'); // Add depth to populate media relationships
+      params.append('depth', '5'); // Increased depth to populate nested media relationships in blocks
       
       const queryString = params.toString();
       console.log(`Fetching page with slug: ${slugToTry}`);
