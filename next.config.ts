@@ -3,8 +3,9 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   // Bundle optimization
   compiler: {
-    // Remove console.logs in production
-    removeConsole: process.env.NODE_ENV === 'production',
+    // Temporarily disabled to debug staging issues
+    // removeConsole: process.env.NODE_ENV === 'production',
+    removeConsole: false,
   },
   images: {
     remotePatterns: [
