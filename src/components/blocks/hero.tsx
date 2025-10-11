@@ -30,6 +30,14 @@ export function HeroSection({
   clientLogo,
 }: HeroSectionProps) {
   useEffect(() => {
+    // DEBUG: Log video URL in browser console
+    console.log('🎬 Hero Component - Browser Side:', {
+      hasBackgroundVideo: !!backgroundVideo,
+      backgroundVideoUrl: backgroundVideo,
+      hasBackgroundImage: !!backgroundImage,
+      backgroundImageUrl: backgroundImage
+    });
+
     // Set CSS custom property for viewport height that accounts for mobile browser UI
     const setViewportHeight = () => {
       const vh = window.innerHeight * 0.01;
@@ -44,7 +52,7 @@ export function HeroSection({
       window.removeEventListener('resize', setViewportHeight);
       window.removeEventListener('orientationchange', setViewportHeight);
     };
-  }, []);
+  }, [backgroundVideo, backgroundImage]);
 
   return (
     <div className={cn('relative w-full h-screen overflow-hidden', className)}>
