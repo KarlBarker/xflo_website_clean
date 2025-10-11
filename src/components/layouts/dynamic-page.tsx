@@ -132,13 +132,22 @@ export function DynamicPage({ page }: DynamicPageProps) {
       case 'hero':
         // Check if this is the homepage by looking at the page slug
         const isHomepage = page.slug === 'home' || page.slug === '/home';
+
+        // DEBUG: Log video URL generation
+        const videoUrl = block.backgroundVideo ? getMediaUrl(block.backgroundVideo) : undefined;
+        console.log('🎬 Hero video debug:', {
+          hasBackgroundVideo: !!block.backgroundVideo,
+          videoObject: block.backgroundVideo,
+          generatedUrl: videoUrl
+        });
+
         return (
           <div key={key} data-nav-theme="dark">
             <HeroSection
               title={block.title}
               subtitle={block.subtitle}
               backgroundImage={block.backgroundImage ? getMediaUrl(block.backgroundImage) : undefined}
-              backgroundVideo={block.backgroundVideo ? getMediaUrl(block.backgroundVideo) : undefined}
+              backgroundVideo={videoUrl}
               variant={isHomepage ? 'homepage' : (block.variant || 'default')}
               clientLogo={block.clientLogo ? {
                 src: getMediaUrl(block.clientLogo),
