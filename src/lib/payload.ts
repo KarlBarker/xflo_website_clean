@@ -221,10 +221,17 @@ export async function getResultsGallery(): Promise<ResultsGallery | null> {
 }
 
 // Media API helpers
-export function getMediaUrl(media: Media | string | null | undefined): string {
+export function getMediaUrl(media: Media | string | number | null | undefined): string {
   // Handle null/undefined media
   if (!media) {
     return '/placeholder-image.jpg'; // Return placeholder instead of empty string
+  }
+
+  // Handle numeric ID - CMS didn't populate the relationship
+  // Return a direct media API URL
+  if (typeof media === 'number') {
+    console.warn(`⚠️ Media relationship not populated, got ID: ${media}`);
+    return `${API_CONFIG.PAYLOAD_URL}/media/file/${media}`;
   }
 
   // Base URL without /api since media URLs include it
