@@ -49,7 +49,7 @@ export function FAQSection({
 
   // Determine text color based on background
   const textColorClass = bgContext === 'dark' ? 'text-content-inverse' : 'text-content-primary';
-  const subtleTextColor = bgContext === 'dark' ? 'text-content-inverse/70' : 'text-content-secondary';
+  const subtleTextColor = bgContext === 'dark' ? 'text-content-inverse/70' : 'text-content-primary/70';
 
   return (
     <div
