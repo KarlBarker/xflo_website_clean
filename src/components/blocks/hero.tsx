@@ -102,7 +102,7 @@ export function HeroSection({
 
       {/* Hero Content */}
       <div className="absolute inset-0 z-10 flex flex-col justify-end" role="region" aria-label="Hero section">
-        <SectionContainer leftAligned={false} className="pb-24 md:pb-40">
+        <SectionContainer leftAligned={false} className="pb-12 md:pb-24">
           {clientLogo && (
             <div className="mb-4 md:mb-6">
               <div className="logo-container md:logo-container-large">
