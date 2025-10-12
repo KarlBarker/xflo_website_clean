@@ -72,12 +72,16 @@ export async function getNavigationData(): Promise<NavigationData> {
   // For now, return default data until Payload CMS navigation is set up
   // This ensures the navigation displays immediately
   try {
+    // Use VERCEL_ENV to differentiate staging from production
+    // VERCEL_ENV='production' only on actual production, 'preview' on staging
+    const isProduction = process.env.VERCEL_ENV === 'production';
+
     const response = await fetch(`${API_CONFIG.PAYLOAD_URL}/globals/navigation`, {
-      next: process.env.NODE_ENV === 'development' ? { 
-        revalidate: 0 // No cache in development for immediate updates
-      } : { 
-        revalidate: 3600, // Cache for 1 hour in production
-        tags: ['navigation'] 
+      next: isProduction ? {
+        revalidate: 3600, // Cache for 1 hour in production only
+        tags: ['navigation']
+      } : {
+        revalidate: 0 // No cache in staging/development for instant updates
       },
       // Add timeout to prevent hanging
       signal: AbortSignal.timeout(5000)
@@ -194,10 +198,15 @@ export async function getNavigationData(): Promise<NavigationData> {
  */
 export async function getFooterData(): Promise<FooterData> {
   try {
+    // Use VERCEL_ENV to differentiate staging from production
+    const isProduction = process.env.VERCEL_ENV === 'production';
+
     const response = await fetch(`${API_CONFIG.PAYLOAD_URL}/globals/footer`, {
-      next: { 
-        revalidate: 3600, // Cache for 1 hour
-        tags: ['footer'] 
+      next: isProduction ? {
+        revalidate: 3600, // Cache for 1 hour in production only
+        tags: ['footer']
+      } : {
+        revalidate: 0 // No cache in staging/development for instant updates
       },
       // Add timeout to prevent hanging
       signal: AbortSignal.timeout(5000)
