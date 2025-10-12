@@ -332,7 +332,7 @@
 
   /* Body Content Typography - Semantic Classes */
   --font-size-intro: 1.875rem;           /* 30px - Introduction text */
-  --line-height-intro: 2.4rem;           /* 38.4px */
+  --line-height-intro: 2.7rem;           /* 43.2px - increased spacing */
   --font-weight-intro: 300;              /* Light weight */
 
   --font-size-body-xl: 1.25rem;          /* 20px - Large body text */

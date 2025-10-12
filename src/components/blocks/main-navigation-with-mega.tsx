@@ -156,14 +156,14 @@ export function MainNavigationWithMega({
               useMegaMenu ? "" : "md:hidden"
             )}></div>
             
-            {/* Navigation Buttons - Login (ghost) + Book Call (outlined) */}
+            {/* Navigation Buttons - Login (desktop only) + Book Demo */}
             <div className="flex items-center gap-3 pt-6 pb-2 mt-2">
-              {/* Login - Ghost Button */}
+              {/* Login - Ghost Button - Desktop Only */}
               <Button
                 variant="ghost"
                 size="sm"
                 className={cn(
-                  "text-sm font-semibold focus:ring-0 focus:ring-offset-0 group",
+                  "hidden md:inline-flex text-sm font-semibold focus:ring-0 focus:ring-offset-0 group",
                   stickyTextColor === 'text-content-inverse'
                     ? "text-content-inverse hover:bg-content-inverse/10"
                     : "text-content-primary hover:bg-content-primary/10"
@@ -176,7 +176,7 @@ export function MainNavigationWithMega({
                 </Link>
               </Button>
 
-              {/* Book Discovery Call - Outlined Button */}
+              {/* Book Demo - Outlined Button */}
               <Button
                 variant="outline"
                 size="sm"
@@ -190,7 +190,7 @@ export function MainNavigationWithMega({
                   window.open('https://calendar.app.google/HbpUtr9XuvuYuhxU7', '_blank');
                 }}
               >
-                Book a Discovery Call
+                Book a Demo
               </Button>
             </div>
 
