@@ -640,7 +640,7 @@
    
    .title-8xl {
      font-size: 6rem;        /* 96px desktop */
-     line-height: 1.3;       /* Matches services section spacing */
+     line-height: 1.1;       /* Tight line height */
      letter-spacing: var(--letter-spacing-header);
     }
    
