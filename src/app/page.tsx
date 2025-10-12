@@ -49,19 +49,29 @@ export default async function HomePage() {
 // Generate metadata for SEO
 export async function generateMetadata() {
   const page = await getPageBySlug('/home');
-  
+
   if (!page) {
     return {
-      title: 'Home | XFlo Digital',
-      description: 'XFlo Digital - Data-driven digital marketing agency'
+      title: 'Home | xFlo.ai',
+      description: 'xFlo.ai - AI transformation platform'
     };
   }
 
+  // Support both new nested format (page.meta.title) and legacy flat format (page.meta_title)
+  const title = page.meta?.title || page.meta_title || page.title || 'Home | xFlo.ai';
+  const description = page.meta?.description || page.meta_description || 'xFlo.ai - AI transformation platform';
+  const image = page.meta?.image || page.meta_image;
+
   return {
-    title: page.meta_title || page.title || 'Home | XFlo Digital',
-    description: page.meta_description || 'XFlo Digital - Data-driven digital marketing agency',
-    openGraph: page.meta_image ? {
-      images: [page.meta_image],
-    } : undefined,
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      images: image ? [{
+        url: typeof image === 'string' ? image : image.url,
+        alt: typeof image === 'object' ? image.alt : title
+      }] : [],
+    },
   };
 }

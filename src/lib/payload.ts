@@ -818,6 +818,13 @@ export interface Page {
   content?: string;
   status?: 'draft' | 'published';
   backgroundColor?: 'light' | 'dark';
+  // SEO metadata - nested object from CMS (new format)
+  meta?: {
+    title?: string;
+    description?: string;
+    image?: Media;
+  };
+  // Legacy flat structure (keeping for backward compatibility)
   meta_title?: string;
   meta_description?: string;
   meta_image?: Media;
