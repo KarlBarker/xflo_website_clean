@@ -77,7 +77,6 @@ export function FAQSection({
             <Accordion
               type="single"
               collapsible
-              defaultValue="category-0"
               className={cn("space-y-6", textColorClass)}
             >
               {categories.map((category, categoryIndex) => (
