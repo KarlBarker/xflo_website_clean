@@ -46,10 +46,9 @@ export function Footer() {
             <Image
               src="/xflo_logo_new2025.svg"
               alt="xFlo Logo"
-              width={140}
-              height={38}
-              style={{ width: '140px', height: 'auto' }}
-              className="filter brightness-0 invert"
+              width={88}
+              height={24}
+              className="h-6 w-auto filter brightness-0 invert"
             />
             <p className="text-content-inverse max-w-sm leading-relaxed">
               The AI platform that transforms your data, automates your workflows, and scales your business.
