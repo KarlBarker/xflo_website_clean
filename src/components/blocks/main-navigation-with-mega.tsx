@@ -156,25 +156,8 @@ export function MainNavigationWithMega({
               useMegaMenu ? "" : "md:hidden"
             )}></div>
             
-            {/* Navigation Buttons - Book Call (outlined) + Login (ghost) */}
+            {/* Navigation Buttons - Login (ghost) + Book Call (outlined) */}
             <div className="flex items-center gap-3 pt-6 pb-2 mt-2">
-              {/* Book Discovery Call - Outlined Button */}
-              <Button
-                variant="outline"
-                size="sm"
-                className={cn(
-                  "text-sm font-semibold focus:ring-0 focus:ring-offset-0",
-                  stickyTextColor === 'text-content-inverse'
-                    ? "text-content-inverse border-content-inverse hover:bg-content-inverse hover:text-content-primary"
-                    : "text-content-primary border-content-primary hover:bg-content-primary hover:text-content-inverse"
-                )}
-                onClick={() => {
-                  window.open('https://calendar.app.google/HbpUtr9XuvuYuhxU7', '_blank');
-                }}
-              >
-                Book a Discovery Call
-              </Button>
-
               {/* Login - Ghost Button */}
               <Button
                 variant="ghost"
@@ -191,6 +174,23 @@ export function MainNavigationWithMega({
                   Login
                   <ArrowRight className="ml-2 h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
                 </Link>
+              </Button>
+
+              {/* Book Discovery Call - Outlined Button */}
+              <Button
+                variant="outline"
+                size="sm"
+                className={cn(
+                  "text-sm font-semibold focus:ring-0 focus:ring-offset-0",
+                  stickyTextColor === 'text-content-inverse'
+                    ? "text-content-inverse border-content-inverse hover:bg-content-inverse hover:text-content-primary"
+                    : "text-content-primary border-content-primary hover:bg-content-primary hover:text-content-inverse"
+                )}
+                onClick={() => {
+                  window.open('https://calendar.app.google/HbpUtr9XuvuYuhxU7', '_blank');
+                }}
+              >
+                Book a Discovery Call
               </Button>
             </div>
 
