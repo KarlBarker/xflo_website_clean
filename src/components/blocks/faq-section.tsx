@@ -96,7 +96,7 @@ export function FAQSection({
                         key={item.id || `${categoryIndex}-${itemIndex}`}
                         value={`category-${categoryIndex}-item-${itemIndex}`}
                         className={cn(
-                          "border rounded-lg px-6 transition-colors",
+                          "border rounded-lg px-6 transition-colors !border-b",
                           bgContext === 'dark'
                             ? 'border-stroke-inverse hover:bg-surface-secondary/10'
                             : 'border-stroke-primary hover:bg-surface-tertiary/30'
@@ -135,7 +135,7 @@ export function FAQSection({
                     key={item.id || `${categoryIndex}-${itemIndex}`}
                     value={`item-${categoryIndex}-${itemIndex}`}
                     className={cn(
-                      "border rounded-lg px-6 transition-colors",
+                      "border rounded-lg px-6 transition-colors !border-b",
                       bgContext === 'dark'
                         ? 'border-stroke-inverse hover:bg-surface-secondary/10'
                         : 'border-stroke-primary hover:bg-surface-tertiary/30'
