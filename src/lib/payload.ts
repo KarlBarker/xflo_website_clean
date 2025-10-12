@@ -775,6 +775,24 @@ export interface AccordionBlockData extends CaseStudyBlock {
   spacingBottom?: 'none' | 'tight' | 'compact' | 'element' | 'component' | 'section';
 }
 
+export interface FAQSectionBlock extends CaseStudyBlock {
+  blockType: 'faqSection';
+  title?: string;
+  subtitle?: string;
+  categories: Array<{
+    id?: string;
+    category: string;
+    items: Array<{
+      id?: string;
+      question: string;
+      answer: string;
+    }>;
+  }>;
+  backgroundColor?: string;
+  spacingTop?: 'none' | 'tight' | 'compact' | 'element' | 'component' | 'section';
+  spacingBottom?: 'none' | 'tight' | 'compact' | 'element' | 'component' | 'section';
+}
+
 
 export interface ResultsGallery {
   id: string;

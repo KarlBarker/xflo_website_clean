@@ -23,6 +23,7 @@ import { ScrollHijackCarousel } from '@/components/blocks/scroll-hijack-carousel
 import { CarouselSlider } from '@/components/blocks/carousel-slider';
 import { TwoColumnText } from '@/components/blocks/two-column-text';
 import { AccordionBlock } from '@/components/blocks/accordion-block';
+import { FAQSection } from '@/components/blocks/faq-section';
 import { getMediaUrl, getCaseStudiesForBento } from '@/lib/payload';
 import { getSpacingClasses } from '@/lib/spacing-utils';
 import { getBackgroundTheme } from '@/lib/theme-utils';
@@ -52,7 +53,8 @@ import type {
   PageHeaderBlock,
   CarouselBlock,
   TwoColumnTextBlock,
-  AccordionBlockData
+  AccordionBlockData,
+  FAQSectionBlock
 } from '@/lib/payload';
 
 // Union type for all possible page blocks
@@ -81,7 +83,8 @@ type PageBlock =
   | PageHeaderBlock
   | CarouselBlock
   | TwoColumnTextBlock
-  | AccordionBlockData;
+  | AccordionBlockData
+  | FAQSectionBlock;
 
 // Dynamic imports for heavy components
 
@@ -255,6 +258,40 @@ export function DynamicPage({ page }: DynamicPageProps) {
               defaultOpenIndex={accordionBlock.defaultOpenIndex}
               spacingTop={accordionBlock.spacingTop}
               spacingBottom={accordionBlock.spacingBottom}
+            />
+          </div>
+        );
+
+      case 'faqSection':
+        const { topClass: faqTopClass, bottomClass: faqBottomClass } = getSpacingClasses(
+          block.spacingTop,
+          block.spacingBottom
+        );
+
+        // Map background colors to design system classes
+        const faqBgClass = block.backgroundColor === 'primary'
+          ? 'bg-surface-primary'
+          : block.backgroundColor === 'light-gray'
+            ? 'bg-surface-tertiary'
+            : 'bg-surface-light';
+
+        // Determine nav theme based on background
+        const faqNavTheme = block.backgroundColor === 'primary' ? 'dark' : 'light';
+
+        return (
+          <div
+            key={key}
+            className={`${faqTopClass} ${faqBottomClass} ${faqBgClass}`}
+            data-nav-theme={faqNavTheme}
+          >
+            <FAQSection
+              title={block.title}
+              subtitle={block.subtitle}
+              categories={block.categories}
+              backgroundColor={block.backgroundColor}
+              layout="categories"
+              spacingTop={block.spacingTop}
+              spacingBottom={block.spacingBottom}
             />
           </div>
         );
