@@ -137,6 +137,28 @@ export function HeroSection({
               </p>
             )}
           </div>
+
+          {/* Bouncing scroll arrow indicator */}
+          <div className="mt-8 md:mt-16">
+            <div className="animate-bounce">
+              <div className="w-8 h-8 md:w-10 md:h-10 border-2 border-white rounded-full flex items-center justify-center">
+                <svg
+                  className="w-4 h-4 md:w-5 md:h-5 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
         </SectionContainer>
       </div>
     </div>
