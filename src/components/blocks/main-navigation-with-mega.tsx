@@ -156,23 +156,41 @@ export function MainNavigationWithMega({
               useMegaMenu ? "" : "md:hidden"
             )}></div>
             
-            {/* TEMPORARY: Book Discovery Call Button instead of Burger Menu */}
-            {/* To restore burger menu: uncomment the section below and remove this button */}
-            <div className="flex pt-6 pb-2 mt-2">
+            {/* Navigation Buttons - Book Call (secondary) + Login (primary) */}
+            <div className="flex items-center gap-3 pt-6 pb-2 mt-2">
+              {/* Book Discovery Call - Secondary Button */}
               <Button
-                variant="outline"
+                variant="ghost"
                 size="sm"
                 className={cn(
                   "text-sm font-semibold focus:ring-0 focus:ring-offset-0",
                   stickyTextColor === 'text-content-inverse'
-                    ? "text-content-inverse border-content-inverse hover:bg-content-inverse hover:text-content-primary"
-                    : "text-content-primary border-content-primary hover:bg-content-primary hover:text-content-inverse"
+                    ? "text-content-inverse hover:bg-content-inverse/10"
+                    : "text-content-primary hover:bg-content-primary/10"
                 )}
                 onClick={() => {
                   window.open('https://calendar.app.google/HbpUtr9XuvuYuhxU7', '_blank');
                 }}
               >
                 Book a Discovery Call
+              </Button>
+
+              {/* Login - Primary Button */}
+              <Button
+                variant="outline"
+                size="sm"
+                className={cn(
+                  "text-sm font-semibold focus:ring-0 focus:ring-offset-0 group",
+                  stickyTextColor === 'text-content-inverse'
+                    ? "text-content-inverse border-content-inverse hover:bg-content-inverse hover:text-content-primary"
+                    : "text-content-primary border-content-primary hover:bg-content-primary hover:text-content-inverse"
+                )}
+                asChild
+              >
+                <Link href="https://app.xflo.ai">
+                  Login
+                  <ArrowRight className="ml-2 h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                </Link>
               </Button>
             </div>
 
