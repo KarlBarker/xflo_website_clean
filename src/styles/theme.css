@@ -805,7 +805,7 @@
 
   .text-intro {
      font-size: 1.5rem;      /* 24px mobile */
-     line-height: 2rem;      /* 32px mobile */
+     line-height: 2.25rem;   /* 36px mobile - increased for better readability */
    }
 
    .text-body-xl {
@@ -826,7 +826,7 @@
    /* Adaptive classes mobile overrides */
    .text-intro-adaptive {
      font-size: 1.5rem;      /* 24px mobile */
-     line-height: 2rem;      /* 32px mobile */
+     line-height: 2.25rem;   /* 36px mobile - matches .text-intro */
    }
 
    .text-quote-adaptive {
