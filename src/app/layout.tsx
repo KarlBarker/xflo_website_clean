@@ -128,7 +128,7 @@ export default async function RootLayout({
         <AiModeProvider>
           <CustomCursor />
           <ScrollToTop />
-          <AiModeContainer />
+          {/* <AiModeContainer /> */}
           {children}
         </AiModeProvider>
         <GoogleTagManager gtmId="GTM-M4CBXHC4" />
