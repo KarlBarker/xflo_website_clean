@@ -59,9 +59,9 @@ export function CMSFooter({ footerData }: CMSFooterProps) {
               <Image
                 src="/xflo_logo_new2025.svg"
                 alt="xFlo Logo"
-                width={73}
-                height={20}
-                style={{ width: '73px', height: 'auto' }}
+                width={80}
+                height={22}
+                style={{ width: '80px', height: 'auto' }}
                 className="filter brightness-0 invert"
               />
             )}
