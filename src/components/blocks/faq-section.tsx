@@ -72,56 +72,72 @@ export function FAQSection({
             )}
           </div>
 
-          {/* Categories Layout */}
+          {/* Categories Layout - Categories as accordions with nested questions */}
           {layout === 'categories' ? (
-            <div className="space-y-12">
+            <Accordion
+              type="single"
+              collapsible
+              defaultValue="category-0"
+              className={cn("space-y-6", textColorClass)}
+            >
               {categories.map((category, categoryIndex) => (
-                <div key={category.id || categoryIndex}>
-                  {/* Category Title */}
-                  <h3 className={cn(
-                    "text-2xl font-semibold mb-6",
+                <AccordionItem
+                  key={category.id || categoryIndex}
+                  value={`category-${categoryIndex}`}
+                  className={cn(
+                    "border rounded-lg transition-colors !border-b",
+                    bgContext === 'dark'
+                      ? 'border-stroke-inverse'
+                      : 'border-stroke-primary'
+                  )}
+                >
+                  {/* Category as Accordion Trigger */}
+                  <AccordionTrigger className={cn(
+                    "text-2xl font-semibold hover:no-underline px-6 py-6 gap-4",
                     textColorClass
                   )}>
                     {category.category}
-                  </h3>
+                  </AccordionTrigger>
 
-                  {/* FAQ Accordion for this category */}
-                  <Accordion
-                    type="single"
-                    collapsible
-                    className={cn("space-y-4", textColorClass)}
-                  >
-                    {category.items.map((item, itemIndex) => (
-                      <AccordionItem
-                        key={item.id || `${categoryIndex}-${itemIndex}`}
-                        value={`category-${categoryIndex}-item-${itemIndex}`}
-                        className={cn(
-                          "border rounded-lg px-6 transition-colors !border-b",
-                          bgContext === 'dark'
-                            ? 'border-stroke-inverse hover:bg-surface-secondary/10'
-                            : 'border-stroke-primary hover:bg-surface-tertiary/30'
-                        )}
-                      >
-                        <AccordionTrigger className={cn(
-                          "text-lg font-semibold hover:no-underline py-5 gap-4",
-                          textColorClass
-                        )}>
-                          {item.question}
-                        </AccordionTrigger>
-                        <AccordionContent className={cn(
-                          "pb-5 text-base leading-relaxed",
-                          subtleTextColor
-                        )}>
-                          <div className="pt-2">
-                            {item.answer}
-                          </div>
-                        </AccordionContent>
-                      </AccordionItem>
-                    ))}
-                  </Accordion>
-                </div>
+                  {/* Nested Questions Accordion */}
+                  <AccordionContent className="pb-6 px-6">
+                    <Accordion
+                      type="single"
+                      collapsible
+                      className={cn("space-y-4 mt-4", textColorClass)}
+                    >
+                      {category.items.map((item, itemIndex) => (
+                        <AccordionItem
+                          key={item.id || `${categoryIndex}-${itemIndex}`}
+                          value={`question-${categoryIndex}-${itemIndex}`}
+                          className={cn(
+                            "border rounded-lg px-6 transition-colors !border-b",
+                            bgContext === 'dark'
+                              ? 'border-stroke-inverse hover:bg-surface-secondary/10'
+                              : 'border-stroke-primary hover:bg-surface-tertiary/30'
+                          )}
+                        >
+                          <AccordionTrigger className={cn(
+                            "text-lg font-semibold hover:no-underline py-5 gap-4",
+                            textColorClass
+                          )}>
+                            {item.question}
+                          </AccordionTrigger>
+                          <AccordionContent className={cn(
+                            "pb-5 text-base leading-relaxed",
+                            subtleTextColor
+                          )}>
+                            <div className="pt-2">
+                              {item.answer}
+                            </div>
+                          </AccordionContent>
+                        </AccordionItem>
+                      ))}
+                    </Accordion>
+                  </AccordionContent>
+                </AccordionItem>
               ))}
-            </div>
+            </Accordion>
           ) : (
             // Single Column Layout (all FAQs together)
             <Accordion
