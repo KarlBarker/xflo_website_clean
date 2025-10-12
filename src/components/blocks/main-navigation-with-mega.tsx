@@ -156,17 +156,17 @@ export function MainNavigationWithMega({
               useMegaMenu ? "" : "md:hidden"
             )}></div>
             
-            {/* Navigation Buttons - Book Call (secondary) + Login (primary) */}
+            {/* Navigation Buttons - Book Call (outlined) + Login (ghost) */}
             <div className="flex items-center gap-3 pt-6 pb-2 mt-2">
-              {/* Book Discovery Call - Secondary Button */}
+              {/* Book Discovery Call - Outlined Button */}
               <Button
-                variant="ghost"
+                variant="outline"
                 size="sm"
                 className={cn(
                   "text-sm font-semibold focus:ring-0 focus:ring-offset-0",
                   stickyTextColor === 'text-content-inverse'
-                    ? "text-content-inverse hover:bg-content-inverse/10"
-                    : "text-content-primary hover:bg-content-primary/10"
+                    ? "text-content-inverse border-content-inverse hover:bg-content-inverse hover:text-content-primary"
+                    : "text-content-primary border-content-primary hover:bg-content-primary hover:text-content-inverse"
                 )}
                 onClick={() => {
                   window.open('https://calendar.app.google/HbpUtr9XuvuYuhxU7', '_blank');
@@ -175,15 +175,15 @@ export function MainNavigationWithMega({
                 Book a Discovery Call
               </Button>
 
-              {/* Login - Primary Button */}
+              {/* Login - Ghost Button */}
               <Button
-                variant="outline"
+                variant="ghost"
                 size="sm"
                 className={cn(
                   "text-sm font-semibold focus:ring-0 focus:ring-offset-0 group",
                   stickyTextColor === 'text-content-inverse'
-                    ? "text-content-inverse border-content-inverse hover:bg-content-inverse hover:text-content-primary"
-                    : "text-content-primary border-content-primary hover:bg-content-primary hover:text-content-inverse"
+                    ? "text-content-inverse hover:bg-content-inverse/10"
+                    : "text-content-primary hover:bg-content-primary/10"
                 )}
                 asChild
               >
