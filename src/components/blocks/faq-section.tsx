@@ -61,7 +61,7 @@ export function FAQSection({
           {/* Header */}
           <div className="text-center mb-12 md:mb-16">
             {title && (
-              <h2 className={cn("title-5xl font-semibold mb-4", textColorClass)}>
+              <h2 className={cn("title-4xl font-semibold mb-4", textColorClass)}>
                 {title}
               </h2>
             )}
