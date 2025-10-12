@@ -87,7 +87,7 @@ export function FAQSection({
                   className={cn(
                     "border rounded-lg transition-colors !border-b",
                     bgContext === 'dark'
-                      ? 'border-stroke-inverse'
+                      ? 'border-neutral-700'
                       : 'border-stroke-primary'
                   )}
                 >
@@ -113,7 +113,7 @@ export function FAQSection({
                           className={cn(
                             "border rounded-lg px-6 transition-colors !border-b",
                             bgContext === 'dark'
-                              ? 'border-stroke-inverse hover:bg-surface-secondary/10'
+                              ? 'border-neutral-700 hover:bg-surface-secondary/10'
                               : 'border-stroke-primary hover:bg-surface-tertiary/30'
                           )}
                         >
@@ -153,7 +153,7 @@ export function FAQSection({
                     className={cn(
                       "border rounded-lg px-6 transition-colors !border-b",
                       bgContext === 'dark'
-                        ? 'border-stroke-inverse hover:bg-surface-secondary/10'
+                        ? 'border-neutral-700 hover:bg-surface-secondary/10'
                         : 'border-stroke-primary hover:bg-surface-tertiary/30'
                     )}
                   >
