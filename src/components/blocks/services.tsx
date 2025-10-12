@@ -47,7 +47,7 @@ export function ServicesSection({
       case 'extra-light-gray':
         return 'bg-surface-extra-light text-content-primary border-0 hover:bg-surface-light hover:text-content-brand transition-colors';
       case 'light-gray':
-        return 'bg-surface-extra-light text-content-primary border-0 hover:bg-surface-light hover:text-content-brand transition-colors';
+        return 'bg-surface-tertiary text-content-primary border-0 hover:bg-surface-light hover:text-content-brand transition-colors';
       case 'dark':
         return 'bg-surface-primary text-content-inverse border-0 hover:bg-surface-light hover:text-content-brand transition-colors';
       case 'brand':
