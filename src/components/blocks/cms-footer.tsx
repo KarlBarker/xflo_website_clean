@@ -61,7 +61,6 @@ export function CMSFooter({ footerData }: CMSFooterProps) {
                 alt="xFlo Logo"
                 width={80}
                 height={22}
-                style={{ width: '80px', height: 'auto' }}
                 className="filter brightness-0 invert"
               />
             )}
