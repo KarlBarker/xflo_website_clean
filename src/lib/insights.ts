@@ -54,7 +54,7 @@ export async function getBlogPosts(options: {
     });
     
     const response = await fetch(`${API_CONFIG.PAYLOAD_URL}/blog-posts?${params}`, {
-      next: { revalidate: 3600 },
+      next: { revalidate: 0 }, // No cache in development for instant updates
     });
     
     if (!response.ok) {
@@ -81,7 +81,7 @@ export async function getBlogPostBySlug(slug: string): Promise<CMSBlogPost | nul
     });
     
     const response = await fetch(`${API_CONFIG.PAYLOAD_URL}/blog-posts?${params}`, {
-      next: { revalidate: 3600 },
+      next: { revalidate: 0 }, // No cache in development for instant updates
     });
     
     if (!response.ok) {
@@ -157,10 +157,13 @@ export function formatBlogPost(cmsPost: CMSBlogPost): {
     return `${Math.max(1, minutes)} min read`;
   };
   
+  // Strip leading slash from slug if present (CMS may include it)
+  const cleanSlug = cmsPost.slug.startsWith('/') ? cmsPost.slug.slice(1) : cmsPost.slug;
+
   return {
     id: cmsPost.id,
     title: cmsPost.title,
-    slug: cmsPost.slug,
+    slug: cleanSlug,
     category: cmsPost.category?.name || 'Uncategorized',
     image: getMediaUrl(cmsPost.featuredImage),
     author: {
@@ -170,7 +173,7 @@ export function formatBlogPost(cmsPost: CMSBlogPost): {
     },
     readTime: calculateReadTime(cmsPost.content || { root: { children: [], direction: 'ltr', format: '', indent: 0, type: 'root', version: 1 } }),
     excerpt: cmsPost.excerpt || '',
-    href: `/insights/${cmsPost.slug}`
+    href: `/insights/${cleanSlug}`
   };
 }
 
@@ -243,29 +246,35 @@ const mockInsights: CMSBlogPost[] = [
 // Get single insight by slug
 export async function getInsightBySlug(slug: string): Promise<CMSBlogPost | null> {
   try {
-    const response = await fetch(`${API_CONFIG.PAYLOAD_URL}/blog-posts?where[slug][equals]=${slug}&limit=1`, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      next: { revalidate: 3600 } // Cache for 1 hour
-    });
+    // Try with leading slash first (CMS format), then without
+    const slugsToTry = [
+      slug.startsWith('/') ? slug : `/${slug}`,  // Try with leading slash
+      slug.startsWith('/') ? slug.slice(1) : slug  // Try without leading slash
+    ];
 
-    if (!response.ok) {
-      console.error(`Failed to fetch insight: ${response.status} ${response.statusText}`);
-      // Return mock data if available
-      const mockInsight = mockInsights.find(post => post.slug === slug);
-      return mockInsight || null;
+    for (const slugVariant of slugsToTry) {
+      const response = await fetch(`${API_CONFIG.PAYLOAD_URL}/blog-posts?where[slug][equals]=${slugVariant}&limit=1`, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        next: { revalidate: 0 } // No cache in development for instant updates
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        if (data.docs && data.docs.length > 0) {
+          return data.docs[0];
+        }
+      }
     }
 
-    const data = await response.json();
-    
-    if (!data.docs || data.docs.length === 0) {
-      // Return mock data if available
-      const mockInsight = mockInsights.find(post => post.slug === slug);
-      return mockInsight || null;
-    }
+    // If neither worked, try mock data
+    console.error(`Failed to fetch insight with slug: ${slug}`);
+    const mockInsight = mockInsights.find(post =>
+      post.slug === slug || post.slug === `/${slug}` || post.slug === slug.replace('/', '')
+    );
+    return mockInsight || null;
 
-    return data.docs[0];
   } catch (error) {
     console.error('Error fetching insight by slug:', error);
     // Return mock data if available

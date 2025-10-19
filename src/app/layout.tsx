@@ -67,7 +67,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <OrganizationStructuredData />
         
@@ -124,6 +124,7 @@ export default async function RootLayout({
       </head>
       <body
         className={`${figtree.className} antialiased`}
+        suppressHydrationWarning
       >
         <AiModeProvider>
           <CustomCursor />

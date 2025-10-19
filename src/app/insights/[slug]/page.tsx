@@ -4,6 +4,7 @@ import { OptimizedImage } from '@/components/ui/optimized-image';
 import { StickyNavigation } from '@/components/blocks/sticky-navigation';
 import { CMSFooter } from '@/components/blocks/cms-footer';
 import { getNavigationData, getFooterData } from '@/lib/navigation';
+import { LexicalRenderer } from '@/components/ui/lexical-renderer';
 
 interface InsightPageProps {
   params: Promise<{ slug: string }>;
@@ -35,21 +36,21 @@ export async function generateMetadata({ params }: InsightPageProps) {
     }
 
     return {
-      title: `${insight.title} | Insights | R3 Digital`,
-      description: insight.excerpt || insight.description || 'R3 Digital insight',
+      title: `${insight.title} | Insights | xFlo.ai`,
+      description: insight.excerpt || insight.description || 'xFlo.ai - AI transformation insights',
       keywords: [
         insight.category?.name || '',
         'insights',
-        'digital marketing',
-        'analytics',
-        'R3 Digital'
+        'AI transformation',
+        'business automation',
+        'xFlo.ai'
       ].filter(Boolean),
     };
   } catch (error) {
     console.error('Error generating metadata for insight:', error);
     return {
-      title: 'Insight | R3 Digital',
-      description: 'R3 Digital insight',
+      title: 'Insight | xFlo.ai',
+      description: 'xFlo.ai - AI transformation insights',
     };
   }
 }
@@ -123,28 +124,13 @@ export default async function InsightPage({ params }: InsightPageProps) {
             </div>
           </div>
 
-          {/* Featured Image */}
-          {insight.featuredImage && (
-            <div className="relative h-[50vh] md:h-[60vh] overflow-hidden">
-              <OptimizedImage
-                src={insight.featuredImage ? (insight.featuredImage as unknown as Record<string, unknown>).url as string || '/images/blog-placeholder.jpg' : '/images/blog-placeholder.jpg'}
-                alt={insight.title}
-                fill
-                className="object-cover"
-                priority
-              />
-            </div>
-          )}
-
           {/* Content Blocks */}
           <div className="py-16">
             <div className="container-inner">
               <div className="max-w-4xl mx-auto">
-                {/* Render content using RichTextRenderer */}
+                {/* Render content using Lexical Renderer */}
                 {insight.content ? (
-                  <div className="prose prose-lg max-w-none">
-                    <pre>{JSON.stringify(insight.content, null, 2)}</pre>
-                  </div>
+                  <LexicalRenderer content={insight.content} className="prose prose-lg max-w-none" />
                 ) : (
                   <p className="text-content-muted">Content will be loaded from CMS.</p>
                 )}

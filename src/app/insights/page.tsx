@@ -7,8 +7,8 @@ import { getNavigationData, getFooterData } from '@/lib/navigation'
 import { BlogPost } from '@/components/insights'
 
 export const metadata = {
-  title: 'Insights | R3 Digital',
-  description: 'Stay ahead with the latest insights on digital marketing, analytics, and business growth from the R3 team.',
+  title: 'Insights | xFlo.ai',
+  description: 'Stay ahead with the latest insights on AI transformation, business automation, and growth strategies from the xFlo team.',
 }
 
 // Mock data fallback for when CMS is not available

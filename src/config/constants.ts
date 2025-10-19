@@ -5,9 +5,10 @@
 
 // API Configuration
 export const API_CONFIG = {
-  PAYLOAD_URL: process.env.NEXT_PUBLIC_PAYLOAD_URL || 'https://xflocms.vercel.app/api',
+  // Use staging CMS for local development, production CMS for deployed site
+  PAYLOAD_URL: process.env.NEXT_PUBLIC_PAYLOAD_URL || 'https://staging.cms.xflo.ai/api',
   XFLO_URL: process.env.NEXT_PUBLIC_XFLO_API_URL || 'https://api.xflo.ai',
-  SITE_URL: process.env.NEXT_PUBLIC_SITE_URL || 'https://xflo.agency',
+  SITE_URL: process.env.NEXT_PUBLIC_SITE_URL || 'https://xflo.ai',
   REVALIDATION_SECRET: process.env.REVALIDATION_SECRET || ''
 } as const;
 
