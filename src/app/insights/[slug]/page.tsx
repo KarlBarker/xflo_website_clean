@@ -78,7 +78,7 @@ export default async function InsightPage({ params }: InsightPageProps) {
 
         <main className="pt-16">
           {/* Insight Header */}
-          <div className="bg-surface-light py-16 md:py-24" data-nav-theme="light">
+          <div className="bg-surface-light pt-16 md:pt-24 pb-8 md:pb-12" data-nav-theme="light">
             <div className="container-inner">
               <div className="max-w-4xl mx-auto text-center">
                 {/* Category Badge */}
@@ -125,7 +125,7 @@ export default async function InsightPage({ params }: InsightPageProps) {
           </div>
 
           {/* Content Blocks */}
-          <div className="py-16">
+          <div className="pt-8 pb-16">
             <div className="container-inner">
               <div className="max-w-4xl mx-auto">
                 {/* Render content using Lexical Renderer */}
